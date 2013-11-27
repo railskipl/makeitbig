@@ -5,12 +5,11 @@ class StoresController < ApplicationController
 	end
 
 	def new
-			if @user.stores.size.zero?
-				@store = @user.stores.new
-			else
-				redirect_to main_app.root_url
-			end
-
+		if @user.stores.size.zero?
+			@store = @user.stores.new
+		else
+			redirect_to main_app.root_url
+		end
 	end
 
 	def create
@@ -44,6 +43,4 @@ class StoresController < ApplicationController
 	def set_user
 		@user = User.find(params[:user_id])
 	end
-
-
 end

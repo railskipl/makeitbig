@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 has_one :plan
 has_many :stores, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
