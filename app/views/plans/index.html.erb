@@ -1,0 +1,33 @@
+<%- model_class = Plan -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:limit) %></th>
+      <% if user_signed_in? %>
+      <th><%=t 'Plan' %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plans.each do |plan| %>
+      <tr>
+        <td><%= link_to plan.id, plan_path(plan) %></td>
+        <td><%= plan.name %></td>
+        <td><%= plan.price %></td>
+        <td><%= plan.limit %></td>
+        <td>
+        	<% if user_signed_in? %>
+        		<%= format_my_plan(plan) %>
+        	<% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

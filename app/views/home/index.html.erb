@@ -1,0 +1,8 @@
+<h3>Welcome to Fastshoppy</h3>
+<% if user_signed_in? %>
+	<p>Your Current plan: <%= link_to current_plan, plans_path %> </p>
+
+
+<%= link_to store_new_edit %>
+
+<% end %>
