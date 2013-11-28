@@ -51,3 +51,11 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem "cancan"
+
+group :test, :development do
+  gem "rspec-rails", "2.13.1"
+end
+
+group :test do
+  gem "capybara", "2.1.0"
+end
