@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 	before_action :set_user_store
 	def index
-		@products = @store.products
+    @products = Product.all
 	end
 
 	def new

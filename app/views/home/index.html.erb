@@ -1,8 +1,18 @@
 <h3>Welcome to Fastshoppy</h3>
 <% if user_signed_in? %>
 	<p>Your Current plan: <%= link_to current_plan, plans_path %> </p>
-
-
 <%= link_to store_new_edit %>
+<% end %>
 
+<%= form_tag root_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+<% if params[:query].present? %>
+<% Product.search(params[:query]).each do |result|  %>
+<%= result.name %>
+<%= result.description %>
+<% end %>
 <% end %>

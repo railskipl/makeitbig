@@ -14,4 +14,15 @@ class Product < ActiveRecord::Base
   def max?
   	product_images.size >= 3
   end
+
+def self.search(query, params={})
+  tire.search(page: params[:page], per_page: 30) do
+    query do
+      boolean do
+        must { string query, default_operator: "AND" }
+      end
+    end
+	end
+end
+
 end

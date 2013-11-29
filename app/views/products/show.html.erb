@@ -14,10 +14,6 @@
   <dd><%= yesno(@product.is_available) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:warranty) %>:</strong></dt>
   <dd><%= yesno(@product.warranty) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @product.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:store_id) %>:</strong></dt>
-  <dd><%= @product.store_id %></dd>
   <dt>Product Image</dt>
   <% @product_images.each do |pro| %>
   <dd>
