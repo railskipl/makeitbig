@@ -1,8 +1,16 @@
 FastShoppy::Application.routes.draw do
+
+
   devise_for :users
+
   resources :users do
-		resources :stores
+		resources :stores do
+			resources :products
+		end
   end
+resources :products do
+  resources :product_images
+end
  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

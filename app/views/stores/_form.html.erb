@@ -51,6 +51,12 @@
       <%= f.text_field :phone, :class => 'text_field' %>
     </div>
   </div>
+  <div class="control-group">
+    <%= f.label :currency, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :currency, Store::CURRENCY, prompt: "Pick one" %>
+    </div>
+  </div>
 
 
   <div class="form-actions">
