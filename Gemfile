@@ -43,7 +43,8 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
+gem 'jquery-rails'
+gem 'tire'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem "devise"
