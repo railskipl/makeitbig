@@ -7,5 +7,10 @@ def index
     @products = Product.all
   end
 end
-		#@results = Product.search(params[:query], :page => params[:page])
+
+def product_show
+	@product = Product.find(params[:id])
+	@product_images = @product.product_images
+end
+
 end

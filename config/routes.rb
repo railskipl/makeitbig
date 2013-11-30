@@ -19,6 +19,7 @@ end
   # root 'welcome#index'
 	root :to => 'home#index'
 	resources :plans
+	get "/product/:id" => 'home#product_show', :as => 'product_search_show'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

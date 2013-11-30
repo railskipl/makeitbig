@@ -11,8 +11,13 @@
   </p>
 <% end %>
 <% if params[:query].present? %>
-<% Product.search(params[:query]).each do |result|  %>
-<%= result.name %>
-<%= result.description %>
+<% Product.search(params[:query], :page => params[:page]).each do |result|  %>
+<h4><%= link_to result.name, product_search_show_path(result.id) %></h4>
+<p><%= image_tag product_search_image(result.id) %></p>
+<p><%= result.description %><br />
+<b>Price:</b> <%= number_to_currency(result.price, unit: search_price(result.store_id)) %> <br />
+<b>Is Available:</b> <%= yesno(result.is_available) %><br />
+<b>Store:</b> <%= store_owner(result.store_id) %></p>
+<HR>
 <% end %>
 <% end %>

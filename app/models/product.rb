@@ -16,7 +16,7 @@ class Product < ActiveRecord::Base
   end
 
 def self.search(query, params={})
-  tire.search(page: params[:page], per_page: 30) do
+  tire.search(page: params[:page], per_page: 10) do
     query do
       boolean do
         must { string query, default_operator: "AND" }

@@ -10,4 +10,24 @@ module HomeHelper
 				link_to "My Store", user_stores_path(current_user)
 			end
 		end
+
+	def product_search_image(id)
+		images = ProductImage.where("product_id =?", id)
+		if images.first == nil
+		else
+			images.first.image_url(:thumb)
+		end
+	end
+
+	def store_owner(id)
+		Store.find(id).owner_name
+	end
+
+	def search_price(id)
+		Store.find(id).currency
+	end
+
+	def store_details(id)
+		Store.find(id)
+	end
 end
