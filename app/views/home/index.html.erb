@@ -1,15 +1,18 @@
+<div class="page-header">
 <h3>Welcome to Fastshoppy</h3>
 <% if user_signed_in? %>
 	<p>Your Current plan: <%= link_to current_plan, plans_path %> </p>
 <%= link_to store_new_edit %>
 <% end %>
+</div>
 
 <%= form_tag root_path, method: :get do %>
   <p>
-    <%= text_field_tag :query, params[:query] %>
+    <%= text_field_tag :query, params[:query], :placeholder => "Search product or store" %>
     <%= submit_tag "Search", name: nil %>
   </p>
 <% end %>
+<table class="table table-striped">
 <% if params[:query].present? %>
 <% Product.search(params[:query], :page => params[:page]).each do |result|  %>
 <h4><%= link_to result.name, product_search_show_path(result.id) %></h4>
@@ -19,5 +22,8 @@
 <b>Is Available:</b> <%= yesno(result.is_available) %><br />
 <b>Store:</b> <%= store_owner(result.store_id) %></p>
 <HR>
+
 <% end %>
+<%= will_paginate(@products, :renderer => WillPaginate::ActionView::LinkRenderer) %>
 <% end %>
+</table>

@@ -45,6 +45,7 @@ end
 # gem 'capistrano', group: :development
 gem 'jquery-rails'
 gem 'tire'
+gem 'bootstrap-will_paginate'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem "devise"

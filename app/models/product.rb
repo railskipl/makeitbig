@@ -17,12 +17,17 @@ class Product < ActiveRecord::Base
 
 def self.search(query, params={})
   tire.search(page: params[:page], per_page: 10) do
-    query do
-      boolean do
-        must { string query, default_operator: "AND" }
-      end
-    end
+     query { string query, default_operator: "AND" }
+     sort { by :published_at, "desc" } if query.blank?
 	end
+end
+
+def to_indexed_json
+  to_json(methods: [:store_name])
+end
+
+def store_name
+  store.owner_name
 end
 
 end
