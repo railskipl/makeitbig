@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 	before_action :set_user_store
 	def index
-    @products = Product.all
+    @products = @store.products
 	end
 
 	def new
@@ -47,10 +47,22 @@ class ProductsController < ApplicationController
 		end
 	end
 
+	def subcategories_by_category
+  if params[:id].present?
+    @subcategories = Category.find(params[:id]).subcategories
+  else
+    @subcategories = []
+  end
+
+  respond_to do |format|
+    format.js
+  end
+end
+
 	private
 
 	def product_params
-		params.require(:product).permit(:name, :description, :price, :warranty, :is_available, :user_id, :product_image_id)
+		params.require(:product).permit(:name, :description, :price, :warranty, :is_available, :user_id, :product_image_id, :category_id, :subcategory_id)
 	end
 
 	def set_user_store

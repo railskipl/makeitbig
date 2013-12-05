@@ -8,7 +8,7 @@
 
 <%= form_tag root_path, method: :get do %>
   <p>
-    <%= text_field_tag :query, params[:query], :placeholder => "Search product or store" %>
+    <%= text_field_tag :query, params[:query], :placeholder => "Search products" %>
     <%= submit_tag "Search", name: nil %>
   </p>
 <% end %>
@@ -24,6 +24,6 @@
 <HR>
 
 <% end %>
-<%= will_paginate(@products, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+<%= will_paginate(@products) %>
 <% end %>
 </table>

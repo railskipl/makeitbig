@@ -26,7 +26,7 @@ RailsAdmin.config do |config|
   # config.compact_show_view = false
 
   # Number of default rows per-page:
-  # config.default_items_per_page = 20
+  config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
   # config.excluded_models = []

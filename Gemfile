@@ -45,7 +45,7 @@ end
 # gem 'capistrano', group: :development
 gem 'jquery-rails'
 gem 'tire'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem "devise"
@@ -55,7 +55,8 @@ gem "twitter-bootstrap-rails"
 gem "cancan"
 gem "rmagick"
 gem "carrierwave"
-
+gem "railroady"
+gem 'jquery-turbolinks'
 group :test, :development do
   gem "rspec-rails", "2.13.1"
 end

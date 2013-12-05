@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%= model_class.human_attribute_name(:limit) %></th>
@@ -17,7 +16,6 @@
   <tbody>
     <% @plans.each do |plan| %>
       <tr>
-        <td><%= link_to plan.id, plan_path(plan) %></td>
         <td><%= plan.name %></td>
         <td><%= plan.price %></td>
         <td><%= plan.limit %></td>

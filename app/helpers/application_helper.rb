@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 	def yesno(x)
-  	x ? "Yes" : "No"
+  	x ? "Yes" : content_tag('b', "No!", :class=>'')
 	end
 
 end

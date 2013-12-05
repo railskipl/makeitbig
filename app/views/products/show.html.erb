@@ -2,6 +2,11 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
+<%= link_to pluralize(@product.reviews.size, 'reviews'),
+            product_reviews_path(@product) %>
+<%= link_to "Write Review", new_product_review_path(@product),
+             class: 'button ok review' %> <br />
+             <%= format_average_stars(@product) %>
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
@@ -14,7 +19,7 @@
   <dd><%= yesno(@product.is_available) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:warranty) %>:</strong></dt>
   <dd><%= yesno(@product.warranty) %></dd>
-  <dt>Product Image</dt>
+  <dt>Product Image: </dt>
   <% @product_images.each do |pro| %>
   <dd>
   		<%= image_tag pro.image_url(:thumb) if pro.image? %> |
@@ -23,9 +28,13 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-
   </dd>
   		<% end %>
+
+<dt>Product Reviews: </dt>
+		<dd><% dup_hash(count_comments(@product)).each do |comments| %>
+					<%= comments[0] %> --> <%= comments[1] %> <br />
+					<% end %></dd>
 </dl>
 
 <div class="form-actions">
@@ -40,3 +49,4 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
+

@@ -5,7 +5,7 @@ class ProductImage < ActiveRecord::Base
   validates :image, presence: true
   validates :image,
   	:file_size => {
-  		:maximum => 0.5.megabytes.to_i
+  		:maximum => 0.1.megabytes.to_i
   	}
   validates_integrity_of :image
 	validates_processing_of :image

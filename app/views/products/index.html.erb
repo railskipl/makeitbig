@@ -19,20 +19,21 @@
       <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%= model_class.human_attribute_name(:is_available) %></th>
       <th><%= model_class.human_attribute_name(:warranty) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <% @products.each do |product| %>
-      <tr>
+      <tr >
       	<td><%= image_tag product_profile_image(product) %></td>
         <td><%= link_to product.name, user_store_product_path(current_user, @store, product) %></td>
-        <td><%= product.description %></td>
+        <td><%= truncate(product.description, length: 75, separator: ' ') %></td>
         <td><%= number_to_currency(product.price, unit: @store.currency) %></td>
         <td><%= yesno(product.is_available) %></td>
         <td><%= yesno(product.warranty) %></td>
-        <td><%= product.created_at %></td>
+        <td><%= product.category.category if product.category %> -->
+        		<%= product.subcategory.subcategory if product.subcategory %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_user_store_product_path(current_user, @store, product), :class => 'btn btn-mini' %>

@@ -1,6 +1,5 @@
 FastShoppy::Application.routes.draw do
 
-
   devise_for :users
 
   resources :users do
@@ -11,6 +10,10 @@ FastShoppy::Application.routes.draw do
 resources :products do
   resources :product_images
 end
+resources :products do
+	resources :reviews
+end
+
  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -20,6 +23,8 @@ end
 	root :to => 'home#index'
 	resources :plans
 	get "/product/:id" => 'home#product_show', :as => 'product_search_show'
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
