@@ -30,4 +30,11 @@ module HomeHelper
 	def store_details(id)
 		Store.find(id)
 	end
+
+	def count_comments(product)
+		product.reviews.pluck(:comments).each do |product|
+			product
+		end
+end
+
 end

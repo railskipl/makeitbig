@@ -6,6 +6,7 @@
   	 <b><i>Address: </i></b><%= store_details(@product.store_id).address %>, <br/>
   	 </b><%= store_details(@product.store_id).city %>, <%= store_details(@product.store_id).state %>, <%= store_details(@product.store_id).country %> </p>
 </div>
+
   <h4><%= @product.name %></h4>
 <dl class="dl-horizontal">
   <dt><strong>Description:</strong></dt>
@@ -23,4 +24,16 @@
 
   </dd>
   		<% end %>
+</dl>
+
+<HR />
+<%= link_to pluralize(@product.reviews.size, 'review'),
+            product_reviews_path(@product) %>
+<%= link_to "Write Review", new_product_review_path(@product),
+             class: 'button ok review' %> <br />
+             <%= format_average_stars(@product) %> <br />
+<dt>Product Reviews: </dt>
+		<dd><% dup_hash(count_comments(@product)).each do |comments| %>
+					<%= comments[0] %> --> <%= comments[1] %> <br />
+					<% end %></dd>
 </dl>

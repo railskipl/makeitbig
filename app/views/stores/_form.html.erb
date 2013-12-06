@@ -57,7 +57,8 @@
       <%= f.select :currency, Store::CURRENCY, prompt: "Pick one" %>
     </div>
   </div>
-
+<%= f.text_field :latitude, :class => 'text_field' %>
+<%= f.text_field :longitude, :class => 'text_field' %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

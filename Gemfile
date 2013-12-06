@@ -52,15 +52,23 @@ gem "devise"
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
+gem 'bootstrap-will_paginate'
 gem "cancan"
 gem "rmagick"
 gem "carrierwave"
 gem "railroady"
 gem 'jquery-turbolinks'
+gem 'rack-mini-profiler'
+gem 'nifty-generators'
+gem 'geocoder'
+gem 'gmaps4rails'
+
 group :test, :development do
   gem "rspec-rails", "2.13.1"
+  gem 'rails-perftest'
+  gem 'ruby-prof'
 end
-
+gem "bullet", :group => "development"
 group :test do
   gem "capybara", "2.1.0"
 end

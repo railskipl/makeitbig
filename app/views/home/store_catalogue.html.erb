@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h3><%= image_tag @store.image_url(:thumb) if @store.image? %>
+  		<%= @store.owner_name %></h3>
+   <b><i>Phone: </i></b> <%= @store.phone %>
+  <p><b><i>Email: </i></b><%= @store.email %><br />
+  	 <b><i>Address: </i></b><%= @store.address %>, <br/>
+  	 </b><%= @store.city %>, <%= @store.state %>, <%= @store.country %> </p>
+</div>
+<h3>Store Products</h4>
+<HR>
+
+<% @products.each do |product| %>
+	<h4><%= link_to product.name, product_search_show_path(product) %></h4>
+<p><%= image_tag product_search_image(product) %></p>
+<p><%= product.description %><br />
+<b>Price:</b> <%= number_to_currency(product.price, unit: search_price(product.store_id)) %> <br />
+<b>Is Available:</b> <%= yesno(product.is_available) %><br />
+<b>Store:</b> <%= store_owner(product.store_id) %>, <%= store_details(product.store_id).city %> </p>
+<HR>
+<% end %>
+	<%= will_paginate @products %>

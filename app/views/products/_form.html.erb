@@ -9,7 +9,7 @@
   <div class="control-group">
     <%= f.label "Sub-Category", :class => 'control-label' %>
     <div class="controls">
-    	<%= f.grouped_collection_select :subcategory_id, Category.order(:category), :subcategories, :category, :id, :subcategory, include_blank: true %>
+    	<%= f.grouped_collection_select :subcategory_id, Category.order(:category).includes(:subcategories), :subcategories, :category, :id, :subcategory, include_blank: true %>
   </div>
   </div>
   <div class="control-group">

@@ -24,7 +24,7 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            user_store_products_path(current_user, @store),
+            product_search_show_path(@product),
             :class => 'btn btn-primary' %>
   </div>
 <% end %>

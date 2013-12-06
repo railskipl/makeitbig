@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 	before_action :set_user_store
 	def index
-    @products = @store.products
+    @products = @store.products.includes(:category, :subcategory)
 	end
 
 	def new
@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
   if params[:id].present?
     @subcategories = Category.find(params[:id]).subcategories
   else
-    @subcategories = []
+    @subcategories = [].includes(:subcategory)
   end
 
   respond_to do |format|

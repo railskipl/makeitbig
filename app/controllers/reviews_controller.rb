@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
 
 	end
 	def destroy
-    @review = Review.find_by_product_id(params[:product_id])
+    @review = @product.reviews.find(params[:id])
     @review.destroy
     redirect_to product_reviews_path(@product), :notice => "Review destroyed Successfully!"
   end
