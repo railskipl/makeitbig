@@ -27,6 +27,7 @@
 <b>Price:</b> <%= number_to_currency(result.price, unit: search_price(result.store_id)) %> <br />
 <b>Is Available:</b> <%= yesno(result.is_available) %><br />
 <b>Store:</b> <%= store_owner(result.store_id) %>, <%= store_details(result.store_id).city %> </p>
+<b>Ratings: </b> <%= search_average_stars(result.id) %>
 <HR>
 
 <% store_idds << result.store_id %>
@@ -43,7 +44,7 @@
 <%  @hash_search = Gmaps4rails.build_markers(store_idds.uniq) do |store, marker|
  			 marker.lat Store.find(store).latitude
   		 marker.lng Store.find(store).longitude
-  		 marker.infowindow "#{Store.find(store).owner_name} - #{Store.find(store).address}" %>
+  		 marker.infowindow link_to "#{Store.find(store).owner_name} - #{Store.find(store).address}, #{Store.find(store).city} ", store_search_show_path(store) %>
 <% end %>
 <script type="text/javascript">
 handler = Gmaps.build('Google');

@@ -24,7 +24,7 @@ module ProductsHelper
      else
      content_tag(:strong, '*' * product.average_stars.round)
     end
-end
+	end
 
 def count_comments(product)
 		product.reviews.pluck(:comments).each do |product|

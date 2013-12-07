@@ -35,6 +35,14 @@ module HomeHelper
 		product.reviews.pluck(:comments).each do |product|
 			product
 		end
-end
+	end
+
+	def search_average_stars(id)
+    if Product.find(id).average_stars.nil?
+      content_tag(:strong, 'No ratings')
+     else
+     content_tag(:strong, '*' * Product.find(id).average_stars.round)
+    end
+	end
 
 end

@@ -53,6 +53,7 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-will_paginate'
+gem 'bootstrap-editable-rails'
 gem "cancan"
 gem "rmagick"
 gem "carrierwave"
@@ -62,7 +63,7 @@ gem 'rack-mini-profiler'
 gem 'nifty-generators'
 gem 'geocoder'
 gem 'gmaps4rails'
-
+gem 'impressionist'
 group :test, :development do
   gem "rspec-rails", "2.13.1"
   gem 'rails-perftest'
