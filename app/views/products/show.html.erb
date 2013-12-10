@@ -25,8 +25,7 @@
               :class => 'btn btn-danger' %>
   </dd>
   		<% end %>
-<dt>Analytics</dt>
-<dd><%= @product.impressionist_count %></dd>
+
 <dt>Product Reviews: </dt>
 		<dd><% dup_hash(count_comments(@product)).each do |comments| %>
 					<%= comments[0] %> --> <%= comments[1] %> <br />

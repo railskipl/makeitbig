@@ -24,10 +24,11 @@
 <h4><%= link_to result.name, product_search_show_path(result.id) %></h4>
 <p><%= image_tag product_search_image(result.id) %></p>
 <p><%= result.description %><br />
+
 <b>Price:</b> <%= number_to_currency(result.price, unit: search_price(result.store_id)) %> <br />
 <b>Is Available:</b> <%= yesno(result.is_available) %><br />
 <b>Store:</b> <%= store_owner(result.store_id) %>, <%= store_details(result.store_id).city %> </p>
-<b>Ratings: </b> <%= search_average_stars(result.id) if result.reviews %>
+<b>Ratings: </b> <%= search_average_stars(result.id) %>
 <HR>
 
 <% store_idds << result.store_id %>

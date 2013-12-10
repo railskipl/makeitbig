@@ -11,4 +11,20 @@ module StoresHelper
     end
 	end
 
+	def analytics_date_x(product,date_x = [])
+		dates =  product.impressions.order("created_at asc").map{|c| c.created_at.strftime("%Y-%m-%d")}
+		dates.to_a.uniq.each do |c|
+	 		date_x << c.to_date.strftime("%m/%d/%Y")
+		end
+		return date_x
+	end
+
+	def analytics_count(product, count = [])
+		dates =  product.impressions.order("created_at asc").map{|c| c.created_at.strftime("%Y-%m-%d")}
+		dates.to_a.uniq.each do |c|
+	 		count << product.impressionist_count(:start_date=> c, :end_date => c.to_date + 1.day )
+		end
+		return count
+	end
+
 end

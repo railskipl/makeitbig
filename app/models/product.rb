@@ -25,6 +25,7 @@ def self.search(query, params={})
      filter :terms, :is_available => [true]
      sort {by [{:published_at => 'desc'}, {:price => 'desc'}, {:average_stars => 'desc'}]} if query.blank?
 	end
+
 end
 
 def to_indexed_json
