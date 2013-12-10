@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -64,6 +64,8 @@ gem 'nifty-generators'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'impressionist'
+gem "highcharts-rails", "~> 3.0.0"
+gem 'groupdate'
 group :test, :development do
   gem "rspec-rails", "2.13.1"
   gem 'rails-perftest'

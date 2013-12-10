@@ -34,6 +34,13 @@ class StoresController < ApplicationController
 		end
 	end
 
+
+
+	def analytics
+		@store = Store.find(params[:id])
+		@products = @store.products.paginate(:page => params[:page], :per_page => 1)
+	end
+
 	private
 
 	def store_params

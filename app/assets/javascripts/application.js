@@ -17,5 +17,7 @@
 //= require jquery.turbolinks
 //= require underscore
 //= require gmaps/google
+//= require highcharts
+//= require highcharts/highcharts-more
 //= require_tree .
 

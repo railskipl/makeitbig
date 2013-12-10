@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
 def index
   if params[:query].present?
     @products = Product.search(params[:query], :page => params[:page])
@@ -17,6 +16,7 @@ end
 def product_show
 	@product = Product.find(params[:id])
 	@product_images = @product.product_images
+	impressionist(@product,"visits", :unique=> [:session_hash])
 end
 
 def store_catalogue

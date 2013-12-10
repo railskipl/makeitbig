@@ -9,6 +9,7 @@ class Product < ActiveRecord::Base
   include Tire::Model::Callbacks
   validates :name, :description, presence: true
   validates :price , numericality: { greater_than_or_equal_to: 0 }
+  is_impressionable
 
   def product_img
   	product_images.first

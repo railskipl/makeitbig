@@ -37,6 +37,9 @@
         <%= add_limit_product(store) %> |
 				<%= link_to t('.new', :default => t("helpers.links.my_products")),
             user_store_products_path(current_user, store),
+            :class => 'btn btn-primary' %> |
+         <%= link_to t('.new', :default => t("helpers.links.store_analytics")),
+            store_analytics_path(store, :user_id => current_user),
             :class => 'btn btn-primary' %>
       </tr>
     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{store.latitude}%2C#{store.longitude}" %>

@@ -27,7 +27,7 @@
 <b>Price:</b> <%= number_to_currency(result.price, unit: search_price(result.store_id)) %> <br />
 <b>Is Available:</b> <%= yesno(result.is_available) %><br />
 <b>Store:</b> <%= store_owner(result.store_id) %>, <%= store_details(result.store_id).city %> </p>
-<b>Ratings: </b> <%= search_average_stars(result.id) %>
+<b>Ratings: </b> <%= search_average_stars(result.id) if result.reviews %>
 <HR>
 
 <% store_idds << result.store_id %>

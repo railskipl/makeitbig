@@ -24,7 +24,7 @@ end
 	resources :plans
 	get "/product/:id" => 'home#product_show', :as => 'product_search_show'
 	get "/store/:id" => 'home#store_catalogue', :as => 'store_search_show'
-
+	get	"/store/:id/analytics" => 'stores#analytics', :as => 'store_analytics'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
