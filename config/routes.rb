@@ -1,12 +1,14 @@
 FastShoppy::Application.routes.draw do
+	devise_for :users
+  # Redirect to root if 404
+  	get '404', to: redirect('/')
 
-  devise_for :users
+resources :users do
+	resources :stores do
+		resources :products
+	end
+end
 
-  resources :users do
-		resources :stores do
-			resources :products
-		end
-  end
 resources :products do
   resources :product_images
 end
@@ -22,9 +24,12 @@ end
   # root 'welcome#index'
 	root :to => 'home#index'
 	resources :plans
-	get "/product/:id" => 'home#product_show', :as => 'product_search_show'
 	get "/store/:id" => 'home#store_catalogue', :as => 'store_search_show'
+	get "/:owner_name/:id" => 'home#product_show', :as => 'product_search_show'
 	get	"/store/:id/analytics" => 'stores#analytics', :as => 'store_analytics'
+	get '/products/:id/status', :to => "products#toggled_feature"
+	put '/plans/', :to => "plans#plan_update", :as => 'plan_update'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

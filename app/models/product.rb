@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+	extend FriendlyId
+  friendly_id :name, use: :slugged
   belongs_to :user
   belongs_to :store
   belongs_to :category
@@ -7,6 +9,7 @@ class Product < ActiveRecord::Base
   has_many :reviews
   include Tire::Model::Search
   include Tire::Model::Callbacks
+  ac_field :name
   validates :name, :description, presence: true
   validates :price , numericality: { greater_than_or_equal_to: 0 }
   is_impressionable
@@ -19,11 +22,16 @@ class Product < ActiveRecord::Base
   	product_images.size >= 3
   end
 
+# Self.search checks if it is available, then sort results first by offers, featured & then price.
 def self.search(query, params={})
   tire.search(page: params[:page], per_page: 7) do
      query { string query, default_operator: "AND", phrase_slop: 3 }
      filter :terms, :is_available => [true]
-     sort {by [{:published_at => 'desc'}, {:price => 'desc'}, {:average_stars => 'desc'}]} if query.blank?
+     sort do
+     	by :featured, 'desc'
+     	by :offer, 'desc'
+     	by :price
+    end
 	end
 
 end
@@ -42,6 +50,10 @@ end
 
 def average_stars
   reviews.average(:stars)
+end
+
+def plan_search
+	store.user.plan_
 end
 
 end

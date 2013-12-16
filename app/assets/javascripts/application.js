@@ -17,7 +17,6 @@
 //= require jquery.turbolinks
 //= require underscore
 //= require gmaps/google
-//= require highcharts
-//= require highcharts/highcharts-more
+//= require nvd3/lib/d3.v2
+//= require nvd3-rails
 //= require_tree .
-

@@ -32,5 +32,13 @@ def count_comments(product)
 		end
 end
 
+def toggle_featured(product)
+	if current_user.plan_id == 2
+		link_to format_boolean(product.featured?), {:controller => 'products', :action => 'toggled_feature', :id => product.id, :user_id => current_user}
+	else
+		"-"
+ 	end
+end
+
 
 end

@@ -22,11 +22,11 @@ class StoresController < ApplicationController
 	end
 
 	def edit
-		@store = @user.stores.find(params[:id])
+		@store = @user.stores.friendly.find(params[:id])
 	end
 
 	def update
-		@store = Store.find(params[:id])
+		@store = Store.friendly.find(params[:id])
 		if @store.update(store_params)
 			redirect_to user_stores_path(@user), :notice => "Store Updated"
 		else
@@ -37,14 +37,15 @@ class StoresController < ApplicationController
 
 
 	def analytics
-		@store = Store.find(params[:id])
-		@products = @store.products.paginate(:page => params[:page], :per_page => 1)
+		@store = Store.friendly.find(params[:id])
+		@products = @store.products.order('featured desc').paginate(:page => params[:page], :per_page => 1)
 	end
+
 
 	private
 
 	def store_params
-		params.require(:store).permit(:owner_name, :email, :address, :city, :state, :country, :phone, :image, :remote_image_url, :currency, :geoaddress, :latitude, :longitude)
+		params.require(:store).permit(:owner_name, :email, :address, :city, :state, :country, :phone, :image, :remote_image_url, :currency, :geoaddress, :latitude, :longitude, :friendly_name, :slug)
 	end
 
 	def set_user

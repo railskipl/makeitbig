@@ -18,3 +18,5 @@
 /tmp
 /public/*
 /README.doc
+Gemfile
+/app/views/*

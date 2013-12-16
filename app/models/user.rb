@@ -3,7 +3,7 @@ has_one :plan
 has_many :stores, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   def plan_name
   	Plan.find(plan_id).name

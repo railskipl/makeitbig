@@ -1,27 +1,26 @@
 class HomeController < ApplicationController
 def index
   if params[:query].present?
-    @products = Product.search(params[:query], :page => params[:page])
+    @products = Product.friendly.search(params[:query], :page => params[:page])
   else
-    @products = Product.all
-    @store = Store.all
-    @hash = Gmaps4rails.build_markers(@store) do |store, marker|
- 			 marker.lat store.latitude
-  		 marker.lng store.longitude
-  		 marker.infowindow "#{store.owner_name} - #{store.address}"
-  	end
+    @products = Product.friendly.all
   end
+    ip = request.ip
+    #Harcoaded IP for development.
+      @response = Geocoder.search('117.222.40.176')
+      @nearby = Store.includes(:user).order("distance").near([@response.first.latitude , @response.first.longitude ], 400)
 end
 
 def product_show
-	@product = Product.find(params[:id])
+	@product = Product.friendly.find(params[:id])
 	@product_images = @product.product_images
 	impressionist(@product,"visits", :unique=> [:session_hash])
 end
 
 def store_catalogue
-	@store = Store.find(params[:id])
+	@store = Store.friendly.find(params[:id])
 	@products = @store.products.paginate(:page => params[:page], :per_page => 7)
 end
+
 
 end

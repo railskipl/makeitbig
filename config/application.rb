@@ -8,6 +8,7 @@ Bundler.require(:default, Rails.env)
 
 module FastShoppy
   class Application < Rails::Application
-
+  	#we need to configure our routes to handle the different error status codes
+  	config.exceptions_app = self.routes
   end
 end
