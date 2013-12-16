@@ -1,4 +1,4 @@
 #To Do
-
-
-Performance: http://pivotallabs.com/rubyrails-performance-tools/
+Mail Scheduler - Cron Jobs
+Update Mail Templates
+Payment Integration
