@@ -1,0 +1,72 @@
+<%= form_for [@user, @store], :html => { :class => 'form-horizontal' } do |f| %>
+	<%= render "shared/errors", object: @store %>
+
+
+	<div class="control-group">
+		 <%= f.label "Store Image", :class => 'control-label' %>
+		<div class="controls">
+		<%= image_tag @store.image_url(:thumb) if @store.image? %>
+    <%= f.file_field :image %>
+   </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :owner_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :owner_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :city, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :city, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :state, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :state, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :country, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :country, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :currency, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :currency, Store::CURRENCY, prompt: "Pick one" %>
+    </div>
+  </div>
+<%= f.text_field :latitude, :id => "latitude" %>
+<%= f.text_field :longitude, :id => "longitude" %>
+
+
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                user_stores_path, :class => 'btn' %>
+  </div>
+<% end %>

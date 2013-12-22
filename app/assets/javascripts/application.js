@@ -13,10 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
 //= require jquery.turbolinks
 //= require underscore
 //= require gmaps/google
 //= require nvd3/lib/d3.v2
 //= require nvd3-rails
+//= require turbolinks
 //= require_tree .
+
+if ($.browser.webkit) {
+     $("your-css-selector").attr('data-no-turbolink', true);
+}

@@ -1,0 +1,40 @@
+<% store_idds = [] %>
+<table class="table table-striped">
+<% if params[:query].present? %>
+<% @products.each do |result|  %>
+
+<h4><%= link_to result.name, product_search_show_path(result.store_id, result.id) %></h4>
+
+<i><%= link_to 'Add to Compare bucket', add_to_compare_path(:product_id =>result.id), :method => :create  %></i>
+<p><%= product_search_image(result.id) %></p>
+<p><%= show_offer(result.id) %></p>
+<p><%= meta_desc(result.id) %><br />
+
+<b>Price:</b> <%= number_to_currency(result.price, unit: search_price(result.store_id)) %> <br />
+<b>Is Available:</b> <%= yesno(result.is_available) %><br />
+<b>Store:</b> <%= link_to store_owner(result.store_id), store_search_show_path(result.store_id) %>, <%= store_details(result.store_id).city %> </p>
+<b>Ratings: </b> <%= search_average_stars(result.id) %>
+<HR>
+
+<% store_idds << result.store_id %>
+<% end %>
+<%= will_paginate(@products) %>
+
+</table>
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+<%  @hash_search = Gmaps4rails.build_markers(store_idds.uniq) do |store, marker|
+ 			 marker.lat Store.find(store).latitude
+  		 marker.lng Store.find(store).longitude
+  		 marker.infowindow link_to "#{Store.find(store).owner_name} - #{Store.find(store).address}, #{Store.find(store).city} ", store_search_show_path(store) %>
+<% end %>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash_search.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
+<% end %>

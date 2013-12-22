@@ -1,0 +1,6 @@
+<h4>Big Deals</h4>
+<% @big_deals.each do |deal| %>
+	<% if deal.active == true %>
+		<%= link_to image_tag deal.image_url(:deal) if deal.image? %>
+	<% end %>
+<% end %>

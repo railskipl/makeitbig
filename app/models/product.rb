@@ -37,7 +37,7 @@ def self.search(query, params={})
 end
 
 def to_indexed_json
-  to_json(methods: [:store_city, :store_name])
+  to_json(methods: [:store_city, :store_name, :scategory])
 end
 
 def store_name
@@ -46,6 +46,10 @@ end
 
 def store_city
   store.city
+end
+
+def scategory
+	subcategory.subcategory
 end
 
 def average_stars

@@ -1,0 +1,85 @@
+<%= form_for [@user, @store, @product], :html => { :class => 'form-horizontal' } do |f| %>
+ 	<%= render "shared/errors", object: @product %>
+  <div class="control-group">
+    <%= f.label "Category", :class => 'control-label' %>
+    <div class="controls">
+    <%= f.collection_select :category_id, Category.order(:category), :id, :category, include_blank: true %>
+  </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Sub-Category", :class => 'control-label' %>
+    <div class="controls">
+    	<%= f.grouped_collection_select :subcategory_id, Category.order(:category).includes(:subcategories), :subcategories, :category, :id, :subcategory, include_blank: true %>
+  </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :price, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :is_available, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :is_available, [['Yes', true], ['No', false]] %><br />
+      	<i> if available, will be displayed for public in your store</i>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :warranty, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :warranty, [['Yes', true], ['No', false]] %>
+    </div>
+  </div>
+  <hr>
+
+  <h4>Any Offers?</h4>
+  <i>If product has offer, your product's ranking improves. </i>
+  <p>* Feature available only in premium plan</p>
+  <% if @store.user.plan_id == 2 %>
+    <div class="control-group">
+    <%= f.label :offer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :offer, :class => 'text_field' %>
+    </div>
+  </div>
+<% end %>
+<hr>
+<h4>Very Useful to refine your search based on keywords!</h4>
+  <div class="control-group">
+    <%= f.label :meta_keywords, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :meta_keywords, :class => 'text_field' %>
+      <i>eg: nexus 5 london, jackets mumbai etc </i>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :meta_description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :meta_description, :class => 'text_field' %><br />
+      <i>Meta Description is shown in search results. Use Promotional statements to attract customers!</i>
+    </div>
+  </div>
+
+      <%= f.hidden_field :user_id, value: @user.id %>
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                user_store_products_path(current_user, @store), :class => 'btn' %>
+  </div>
+<% end %>

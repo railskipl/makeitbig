@@ -1,0 +1,20 @@
+<h3>Compare Products</h3>
+
+<% if @products.nil? %>
+<%= link_to "back",:back %>
+<% else %>
+<% @products.each do |pro| %>
+	<% prod = Product.find(pro) %>
+	<%= prod.name %>
+	<%= product_search_image(pro) %>
+	<%= meta_desc(pro) %>
+<b>Price:</b> <%= number_to_currency(prod.price, unit: search_price(prod.store_id)) %>
+	<%= show_offer(pro) %><br />
+	<b>Ratings: </b> <%= search_average_stars(pro) %>
+	<b>Store:</b> <%= link_to store_owner(prod.store_id), store_search_show_path(prod.store_id) %>, <%= store_details(prod.store_id).city %> </p>
+	<br />
+<i><%= link_to 'Delete', empty_compare_path(:product_id => pro), :method => :delete %></i> <br />
+	<HR>
+<% end %>
+<% end %>
+<%= link_to 'home', '/' %>

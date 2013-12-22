@@ -9,6 +9,37 @@ def index
     #Harcoaded IP for development.
       @response = Geocoder.search('117.222.40.176')
       @nearby = Store.includes(:user).order("distance").near([@response.first.latitude , @response.first.longitude ], 400)
+      @big_deals = BigDeal.order("distance").near([@response.first.latitude , @response.first.longitude ], 200).limit(3)
+end
+
+def create
+	session[:temporary_shopping_cart] = [] if session[:temporary_shopping_cart].nil?
+ if session[:temporary_shopping_cart] == []
+ 	session[:temporary_shopping_cart] = []
+ 			session[:temporary_shopping_cart] << params[:product_id]
+ 			redirect_to :back
+ else
+ 	if session[:temporary_shopping_cart].include?(params[:product_id])
+			redirect_to :back, :notice => 'This item exists! Try other!'
+	elsif session[:temporary_shopping_cart].size > 4
+			redirect_to :back, :notice => "Max 5 items can be compared!"
+	else
+ 			session[:temporary_shopping_cart] = [] unless params[:product_id]
+ 			session[:temporary_shopping_cart] << params[:product_id]
+ 			redirect_to :back
+ 	end
+ end
+end
+
+def destroy
+	session[:temporary_shopping_cart].delete(params[:product_id])
+	redirect_to :back
+	rescue ActionController::RedirectBackError
+  		redirect_to root_path
+end
+
+def compare_product
+	@products = session[:temporary_shopping_cart]
 end
 
 def product_show

@@ -1,0 +1,7 @@
+<h4>Featured Stores</h4>
+<% @nearby.each do |store| %>
+	<% if store.user.plan_id == 2 %>
+		<%= link_to image_tag store.image_url(:thumb), size: "100" if store.image? %>
+		<%= link_to store.owner_name, store_search_show_path(store) %>
+	<% end %>
+<% end %>

@@ -1,0 +1,13 @@
+<%  if session[:temporary_shopping_cart].nil? %>
+
+<% else %>
+	<% compare = [] %>
+<p><b> Compared: </b> <% session[:temporary_shopping_cart].each do |temp| %>
+	<% compare << temp %>
+		<%= Product.find(temp).name %> - <%= store_owner(Product.find(temp).store_id) %> | <i><%= link_to 'Delete', empty_compare_path(:product_id => temp), :method => :delete %></i> <br />
+
+		<% end %>
+
+<h5><%= link_to "Compare all", compare_products_path(:pro => compare) %></h5>
+</p>
+<% end %>

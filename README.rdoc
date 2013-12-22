@@ -1,4 +1,4 @@
 #To Do
-Mail Scheduler - Cron Jobs
-Update Mail Templates
+Mail Scheduler - Cron Jobs,
+Update Mail Templates,
 Payment Integration
