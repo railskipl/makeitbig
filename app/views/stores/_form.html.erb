@@ -58,6 +58,24 @@
       <%= f.select :currency, Store::CURRENCY, prompt: "Pick one" %>
     </div>
   </div>
+  <hr>
+<h4>Very Useful to refine your search based on keywords!</h4>
+  <div class="control-group">
+    <%= f.label :meta_keywords, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :meta_keywords, :class => 'text_field' %>
+      <i>eg: nexus 5 london, jackets mumbai etc </i>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :meta_desc ,"Meta Description", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :meta_desc, :class => 'text_field' %><br />
+      <i>Meta Description is shown in search results. Use Promotional statements to attract customers!</i>
+    </div>
+  </div>
+
 
 
 <% if params[:action] == "edit" %>
