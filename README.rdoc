@@ -1,17 +1,9 @@
 #To Do
 
 ##Store Module
-Update Co-ordinates on store edit & new
 Create sample fb like page for store owner.
 Inlcude like button & display its count
 Show help link to create fb like page
-
-##Store SEO - The spider of your store
-a. Meta Keywords - Category, Subcategory, store name, store name city
-Meta Keywords automatically gets updated with above factors
-b. Meta Description - Store owner will add it
-
-This section will be dynamic meta tags of store owner's page.
 
 ##Product Module
 Show publish button, if store owner has fb like page.
@@ -68,3 +60,15 @@ Oprimise the images, if loading time is high.
 Use Page-Speed or Yslow while integrating the design
 
 ##Payment Integration
+
+
+Completed Tasks:
+##Store Module
+Update Co-ordinates on store edit & new
+
+##Store SEO - The spider of your store
+a. Meta Keywords - Category, Subcategory, store name, store name city
+Meta Keywords automatically gets updated with above factors
+b. Meta Description - Store owner will add it
+
+This section will be dynamic meta tags of store owner's page.
