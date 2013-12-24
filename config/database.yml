@@ -7,7 +7,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: test-mysql2_development
+  database: fast-shop
   pool: 5
   username: root
   password:

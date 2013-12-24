@@ -7,7 +7,7 @@ class CreateStores < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :country
-      t.integer :phone
+      t.string :phone
       t.references :user, index: true
 
       t.timestamps
