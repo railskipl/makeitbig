@@ -58,10 +58,26 @@
       <%= f.select :currency, Store::CURRENCY, prompt: "Pick one" %>
     </div>
   </div>
-<%= f.text_field :latitude, :id => "latitude" %>
-<%= f.text_field :longitude, :id => "longitude" %>
 
 
+<% if params[:action] == "edit" %>
+  
+<table>
+    <tr>
+        <td>Latitude:</td>
+        <td>Longitude:</td>
+    </tr>
+    <tr>
+        <td>
+          <%= f.text_field :latitude, :id => "latitude",:id => "LatitudeTextBox" %>
+        </td>
+        <td>
+          <%= f.text_field :longitude, :id => "longitude" ,:id => "LongitudeTextBox"%>
+        </td>
+    </tr>
+</table>
+<div id="map_canvas" style="width: 600px; height: 300px"></div>
+<% end %>
 
 
   <div class="form-actions">

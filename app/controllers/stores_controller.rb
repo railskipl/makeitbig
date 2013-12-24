@@ -15,7 +15,7 @@ class StoresController < ApplicationController
 	def create
 		@store = @user.stores.new(store_params)
 		if @store.save
-			redirect_to user_stores_path(@user), :notice => "Your Store Created!"
+			redirect_to user_stores_path(@user), :notice => "Your Store Created! Please Edit If Your Address is Wrong"
 		else
 			render :new
 		end
