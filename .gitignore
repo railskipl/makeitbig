@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 /README.doc
-
+/config/database.yml
 
