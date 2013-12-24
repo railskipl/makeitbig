@@ -11,6 +11,7 @@ class Store < ActiveRecord::Base
 	CURRENCY = %w[Rs. $ &pound; Euro]
 	validates :currency, inclusion: { in: CURRENCY }
 	geocoded_by :geoaddress
+	before_save :meta
 	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
 
 	def friendly_name
@@ -29,4 +30,13 @@ class Store < ActiveRecord::Base
 		Plan.find(user.plan_id).limit
 	end
 
+	def meta
+	 if self.meta_keywords.blank?
+	 	metakeywords
+	 end
+	end
+
+	def metakeywords
+	 self.meta_keywords = self.owner_name + "," + self.address + "," + self.city
+	end
 end

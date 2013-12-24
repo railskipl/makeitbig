@@ -15,7 +15,7 @@ class StoresController < ApplicationController
 	def create
 		@store = @user.stores.new(store_params)
 		if @store.save
-			redirect_to user_stores_path(@user), :notice => "Your Store Created!"
+			redirect_to user_stores_path(@user), :notice => "Your Store Created! Please Edit If Your Address is Wrong"
 		else
 			render :new
 		end
@@ -45,7 +45,7 @@ class StoresController < ApplicationController
 	private
 
 	def store_params
-		params.require(:store).permit(:owner_name, :email, :address, :city, :state, :country, :phone, :image, :remote_image_url, :currency, :geoaddress, :latitude, :longitude, :friendly_name, :slug, :gmaps)
+		params.require(:store).permit(:owner_name, :email, :address, :city, :state, :country, :phone, :image, :remote_image_url, :currency, :geoaddress, :latitude, :longitude, :friendly_name, :slug, :gmaps,:meta_keywords,:meta_desc)
 	end
 
 	def set_user

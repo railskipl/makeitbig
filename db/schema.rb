@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219060036) do
+ActiveRecord::Schema.define(version: 20131224062614) do
 
   create_table "big_deals", force: true do |t|
     t.string   "name"
@@ -156,11 +156,13 @@ ActiveRecord::Schema.define(version: 20131219060036) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
-    t.string   "currency",   default: "Rs."
+    t.string   "currency",      default: "Rs."
     t.float    "latitude"
     t.float    "longitude"
     t.string   "slug"
     t.boolean  "gmaps"
+    t.string   "meta_keywords"
+    t.text     "meta_desc"
   end
 
   add_index "stores", ["slug"], name: "index_stores_on_slug", unique: true, using: :btree
