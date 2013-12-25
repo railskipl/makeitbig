@@ -35,6 +35,7 @@ end
 	delete '/home/:product_id', :to => "home#destroy", :as => 'empty_compare'
 	get 'compare_product', :to => "home#compare_product", :as => 'compare_products'
 
+  get 'productlists', :to => "home#productlists"
 
 
   # Example of regular route:

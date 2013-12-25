@@ -1,3 +1,16 @@
+
+<% content_for :styles do %>
+ <%= stylesheet_link_tag "token-input", "token-input-facebook" %>
+<% end %>
+<% content_for :scripts do %>
+<%= javascript_include_tag "jquery.tokeninput" %>
+<% end %>
+<script type="text/javascript">
+jQuery(function() {
+  return jQuery('#product_name').tokenInput('/productlists.json');
+});
+
+</script>
 <%= form_for [@user, @store, @product], :html => { :class => 'form-horizontal' } do |f| %>
  	<%= render "shared/errors", object: @product %>
   <div class="control-group">
@@ -13,9 +26,10 @@
   </div>
   </div>
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
+    <%= f.label :name ,"Product Name", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, :class=>"large_textfield" %>
+      <%#= f.collection_select :name,ProductList.all, :name,:name ,{},:class => "ankit" %>
     </div>
   </div>
   <div class="control-group">
