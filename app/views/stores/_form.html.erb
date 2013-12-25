@@ -58,6 +58,15 @@
       <%= f.select :currency, Store::CURRENCY, prompt: "Pick one" %>
     </div>
   </div>
+
+
+ <div class="control-group">
+    <%= f.label :facebook_url, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :facebook_url, :class => 'text_field' %>
+    </div>
+  </div>
+
   <hr>
 <h4>Very Useful to refine your search based on keywords!</h4>
   <div class="control-group">
@@ -94,7 +103,7 @@
         </td>
     </tr>
 </table>
-  <input type="button" value="Reload page" onclick="reloadPage()">
+  <input type="button" value="Show Map" onclick="reloadPage()">
 
 <div id="map_canvas" style="width: 600px; height: 300px"></div>
 <% end %>
