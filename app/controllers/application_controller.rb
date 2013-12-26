@@ -4,10 +4,12 @@ class ApplicationController < ActionController::Base
   end
   protect_from_forgery with: :exception
 
+  before_filter :meta_defaults
+
   def meta_defaults
-     @meta_title = "Welcome to FastShoppy.com"
+      @meta_title = "Welcome to FastShoppy.com"
       @meta_keywords = "FastShoppy"
-     @meta_description = "FastShoppy"
+      @meta_description = "FastShoppy"
   end
 
 end
