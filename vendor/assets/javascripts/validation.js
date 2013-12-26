@@ -6,8 +6,18 @@ jQuery(document).ready(function() {
 	rules: {
 	  "product[category_id]":{
 	 				  required: true
-				}						
+				}	,					
 		
+		 "product[name]":{
+	 				  required: true
+				},
+		"product[description]" : {
+				required: true
+		},
+		"product[price]" :{
+			required: true,
+			number:true
+		}						
 			
 	
 		},
