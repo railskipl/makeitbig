@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
 
 	def edit
 		@product = @store.products.friendly.find(params[:id])
+		@products = Product.all
 	end
 
 	def update
