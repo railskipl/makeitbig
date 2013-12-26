@@ -41,7 +41,7 @@ end
 def productlists
 	  @productlists = ProductList.order(:name)
 	  respond_to do |format|
-      format.json { render json: @productlists.json_tokens(params[:q])}
+      format.json { render json: @productlists.json_tokens(params[:q]),:callback => params['callback']}
      end
 end
 

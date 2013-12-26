@@ -6,15 +6,7 @@ jQuery(document).ready(function() {
 	rules: {
 	  "product[category_id]":{
 	 				  required: true
-				},
-	 "product[subcategory_id]":{
-	 				  required: true
-	 				 
-				},
-    "product[name]" :{
-                    required: true
-                    
-    }						
+				}						
 		
 			
 	
@@ -23,14 +15,7 @@ jQuery(document).ready(function() {
 	"product[category_id]":{
 					  required: "Category cannot be blank"
 					 
-				},
-	"product[subcategory_id]":{
-					  required: "Sub-Category cannot be blank"
-				},
-    "product[name]" :{
-                    required: "Field Cannot be blank"
-    }
-			
+				}	
 		}
 	});
 	
