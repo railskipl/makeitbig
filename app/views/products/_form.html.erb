@@ -29,7 +29,7 @@ jQuery(function() {
   <div class="control-group">
     <%= f.label :name ,"Product Name", :class => 'control-label' %>
     <div class="controls">
-         <%= f.text_field :name, :class=>"large_textfield", data: {load: @products} %>
+         <%= f.text_field :name, :class=>"large_textfield", data: {load: [@product]} %>
       <%#= f.collection_select :name,ProductList.all, :name,:name ,{},:class => "ankit" %>
     </div>
   </div>
