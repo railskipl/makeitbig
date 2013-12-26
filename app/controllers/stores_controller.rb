@@ -2,6 +2,8 @@ class StoresController < ApplicationController
 	before_action :set_user
 	def index
 		@stores = @user.stores
+		@meta_keywords = @stores.first.meta_keywords
+		@meta_description = @stores.first.meta_desc
 	end
 
 	def new
