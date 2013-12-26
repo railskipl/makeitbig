@@ -10,9 +10,15 @@ class Product < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
   ac_field :name
-  validates :name, :description, presence: true
+  validates :name, :description,:category,:subcategory, presence: true
   validates :price , numericality: { greater_than_or_equal_to: 0 }
   is_impressionable
+
+  after_save :product_list
+
+  def product_list
+    ProductList.find_or_create_by(:name => self.name)
+  end
 
   def product_img
   	product_images.first

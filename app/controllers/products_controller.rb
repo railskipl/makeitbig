@@ -38,6 +38,8 @@ class ProductsController < ApplicationController
 	def show
 		@product = @store.products.friendly.find(params[:id])
 		@product_images = @product.product_images
+		@meta_keywords = @product.meta_keywords
+		@meta_description = @product.meta_description
 	end
 
 	def destroy
