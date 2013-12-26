@@ -38,6 +38,13 @@ def destroy
   		redirect_to root_path
 end
 
+def productlists
+	  @productlists = ProductList.order(:name)
+	  respond_to do |format|
+      format.json { render json: @productlists.json_tokens(params[:q])}
+     end
+end
+
 def compare_product
 	@products = session[:temporary_shopping_cart]
 end
