@@ -1,8 +1,7 @@
 #To Do
 
 ##Store Module
-1. Create sample fb like page for store owner.
-2. Inlcude like button & display its count
+
 3. Show help link to create fb like page
 
 
@@ -57,7 +56,10 @@ This will be the last module to implement after design integration.
 Completed Tasks:
 ##Store Module
 Update Co-ordinates on store edit & new
+1. Create sample fb like page for store owner.
+2. Inlcude like button & display its count
 4. Validation for Store Image
+
 
 ##Store SEO - The spider of your store
 a. Meta Keywords - Category, Subcategory, store name, store name city
