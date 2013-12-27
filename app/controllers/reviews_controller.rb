@@ -12,7 +12,9 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
+		@store = @product.store
 		@review = @product.reviews.new(reviews_params)
+
 		if @review.save
 			redirect_to product_reviews_path(@product),
 						notice: "Thanks, for your review."
