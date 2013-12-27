@@ -10,14 +10,7 @@ Show publish button, if store owner has fb like page.
 Able to publish product listing with appropriate template on fb page
 Create a sample Store Admin facebook like page
 if premium user, its product will be published on Store admins fb page
-Create Product List Functionlaity
-Search products within Store
 
-Product has already the meta keywords & description.
-Meta Keywords -populates -->"category, subcategory, subcategory city,
-store owner name city, product name city" & then store owners adds it.
-
-Meta Description: if not added would be 50 words of product description.
 
 ##Reviews Module
 1. Bold the Max Count of Review
@@ -70,5 +63,13 @@ Update Co-ordinates on store edit & new
 a. Meta Keywords - Category, Subcategory, store name, store name city
 Meta Keywords automatically gets updated with above factors
 b. Meta Description - Store owner will add it
-
 This section will be dynamic meta tags of store owner's page.
+
+##Product Module
+Create Product List Functionlaity
+Search products within Store
+
+Product has already the meta keywords & description.
+Meta Keywords -populates -->"category, subcategory, subcategory city,
+store owner name city, product name city" & then store owners adds it.
+Meta Description: if not added would be 50 words of product description.
