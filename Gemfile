@@ -56,7 +56,8 @@ gem "twitter-bootstrap-rails"
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-editable-rails'
 gem "cancan"
-gem "rmagick"
+# gem "rmagick"
+gem "mini_magick"
 gem "carrierwave"
 #gem "railroady"
 gem 'jquery-turbolinks'

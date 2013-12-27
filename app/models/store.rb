@@ -14,6 +14,15 @@ class Store < ActiveRecord::Base
 	before_save :meta
 	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
 
+	validate :validate_minimum_image_size
+
+	def validate_minimum_image_size
+	  image = MiniMagick::Image.open(self.image.path)
+	  unless image[:width] > 200 && image[:height] > 200
+	    errors.add :image, "should be 200x200px minimum!" 
+	  end
+	end
+
 	def friendly_name
 		[owner_name,city].compact.join('-')
 	end
