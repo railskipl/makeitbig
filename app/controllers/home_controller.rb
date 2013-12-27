@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 def index
   if params[:query].present?
-    @products = Product.includes(:stores).friendly.search(params[:query], :page => params[:page])
+    @products = Product.friendly.search(params[:query], :page => params[:page])
   else
     @products = Product.friendly.all
   end
