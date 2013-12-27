@@ -21,7 +21,12 @@
   		<%= image_tag pro.image_url(:thumb) if pro.image? %> |
 
               <%= link_to content_tag('i', '', class: 'icon-trash'), product_product_image_path(@product, pro), method: :delete, confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), 'data-my-message' => "hi" %>
+
+
+
   </dd>
+
+
   		<% end %>
 
 <dt>Product Reviews: </dt>
@@ -42,17 +47,6 @@
               :class => 'btn btn-danger' %>
 </div>
 
-
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=572448302812563";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<div class="fb-share-button" data-href=<%= @store.facebook_url%> data-type="button_count"></div>
+<% @product_images.each do |pro| %>
+  <a href="http://www.facebook.com/sharer.php?s= 100&amp;p[title]=<%=@product.name %>,<%= @store.city %>,<%= @store.country %>&amp;p[url]=<%="#{request.url}"%>&amp;p[images][0]=<%= "image_tag pro.image_url(:thumb)"%>&amp;p[summary]=<%= @product.description %> "target="_blank" >Share on Facebook</a>
+  <% end %>
