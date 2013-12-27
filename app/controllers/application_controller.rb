@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def meta_defaults
       @meta_title = "Welcome to FastShoppy.com"
-      @meta_keywords = "FastShoppy"
+      @meta_keywords = "FastShoppy, FastShoppy.com, Books, Online Shopping, Book Store, Magazine, Music, CDs, DVDs, Videos, Electronics, Video Games, Computers, Cell Phones, Toys, Games, Apparel, Accessories, Shoes, Jewelry, Watches, Office Products, Sports &amp; Outdoors, Sporting Goods, Baby Products, Health, Personal Care, Beauty, Home, Garden, Bed & Bath, Furniture, Tools, Hardware, Vacuums, Outdoor Living, Automotive Parts, Pet Supplies, Broadband, DSL"
       @meta_description = "FastShoppy"
   end
 
