@@ -36,7 +36,12 @@
              class: 'btn btn-primary' %> <br />
              <br />
 <dt>Product Reviews: </dt>
+
 		<dd><% dup_hash(count_comments(@product)).each do |comments| %>
-					<%= comments[0] %> --> <%= comments[1] %> <br />
-					<% end %></dd>
+          <% if maximum_count(dup_hash(count_comments(@product))) == comments[1]%>
+					<b><%= comments[0] %> --> <%= comments[1] %></b> <br />
+          <% else %>
+          <%= comments[0] %> --> <%= comments[1] %> <br />
+          <% end %>
+				<% end %></dd>
 </dl>

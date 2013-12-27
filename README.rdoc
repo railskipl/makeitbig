@@ -4,7 +4,7 @@
 1. Create sample fb like page for store owner.
 2. Inlcude like button & display its count
 3. Show help link to create fb like page
-4. Validation for Store Image
+
 
 ##Product Module
 1. Show publish button, if store owner has fb like page.
@@ -13,9 +13,6 @@
 4. if premium user, its product will be published on Store admins fb page
 5. Search within Store
 6. Validation for Products' Images
-
-##Reviews Module
-1. Bold the Max Count of Review
 
 ##Follow Store - Use separate model for Followers
 1. Visitor click on button.
@@ -60,6 +57,7 @@ This will be the last module to implement after design integration.
 Completed Tasks:
 ##Store Module
 Update Co-ordinates on store edit & new
+4. Validation for Store Image
 
 ##Store SEO - The spider of your store
 a. Meta Keywords - Category, Subcategory, store name, store name city
@@ -70,6 +68,9 @@ This section will be dynamic meta tags of store owner's page.
 ##Product Module
 a. Create Product List Functionlaity
 b. Search products within Store
+
+##Reviews Module
+1. Bold the Max Count of Review
 
 Product has already the meta keywords & description.
 a. Meta Keywords -populates -->"category, subcategory, subcategory city,
