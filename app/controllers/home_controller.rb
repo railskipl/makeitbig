@@ -58,6 +58,8 @@ end
 def store_catalogue
 	@store = Store.friendly.find(params[:id])
 	@products = @store.products.paginate(:page => params[:page], :per_page => 7)
+	@meta_keywords = @store.meta_keywords
+	@meta_description = @store.meta_desc
 end
 
 

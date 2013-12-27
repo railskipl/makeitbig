@@ -6,7 +6,9 @@
 <% end %>
 <script type="text/javascript">
 jQuery(function() {
-  return jQuery('#product_name').tokenInput('/productlists.json');
+  return jQuery('#product_name').tokenInput('/productlists.json', {
+    prePopulate: jQuery('#product_name').data('load')
+  });
 });
 
 </script>
@@ -27,7 +29,7 @@ jQuery(function() {
   <div class="control-group">
     <%= f.label :name ,"Product Name", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class=>"large_textfield" %>
+         <%= f.text_field :name, :class=>"large_textfield", data: {load: [@product]} %>
       <%#= f.collection_select :name,ProductList.all, :name,:name ,{},:class => "ankit" %>
     </div>
   </div>

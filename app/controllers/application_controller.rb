@@ -4,18 +4,12 @@ class ApplicationController < ActionController::Base
   end
   protect_from_forgery with: :exception
 
+  before_filter :meta_defaults
+
   def meta_defaults
-    seo = Seo.first
-    if seo.present?
-      @meta_title = seo.meta_title
-      @meta_keywords = seo.meta_description
-      @meta_description = seo.meta_keyword
-    else
-      @meta_title = "Welcome to Gifttaking.com"
-      @meta_keywords = "The gift taking web application is a comprehensive online gifting platform geared towards the gift givers."
-      @meta_description = "The gift taking web application is a comprehensive online gifting platform geared towards the gift givers."
-    end
-    
+      @meta_title = "Welcome to FastShoppy.com"
+      @meta_keywords = "FastShoppy"
+      @meta_description = "FastShoppy"
   end
 
 end

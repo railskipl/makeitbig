@@ -13,6 +13,7 @@ class Product < ActiveRecord::Base
   validates :name, :description,:category,:subcategory, presence: true
   validates :price , numericality: { greater_than_or_equal_to: 0 }
   is_impressionable
+  before_validation :metaK,:metaD
 
   after_save :product_list
 
@@ -26,6 +27,28 @@ class Product < ActiveRecord::Base
 
   def max?
   	product_images.size >= 3
+  end
+
+  def metaK
+   if self.meta_keywords.blank?
+      metakeywords
+   end
+  end
+
+  def metakeywords
+    metakeywords = []
+    metakeywords.push(self.name,self.category.category,scategory,store_name,store_city,)
+    self.meta_keywords = metakeywords.join(",")
+  end
+
+  def metaD
+    if self.meta_description.blank?
+      metadescription
+    end
+  end
+
+  def metadescription
+     self.meta_description = self.description.truncate(50)
   end
 
 # Self.search checks if it is available, then sort results first by offers, featured & then price.

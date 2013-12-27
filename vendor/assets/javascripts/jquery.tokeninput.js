@@ -21,8 +21,8 @@ var DEFAULT_SETTINGS = {
     contentType: "json",
 
     // Prepopulation settings
-    prePopulate: null,
-    processPrePopulate: false,
+    prePopulate: true,
+    processPrePopulate: true,
 
     // Display settings
     hintText: "Type in a search term",

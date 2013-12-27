@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 20131224110243) do
     t.string   "city"
     t.string   "state"
     t.string   "country"
-    t.string   "phone"
+    t.integer  "phone"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
