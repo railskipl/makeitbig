@@ -1,4 +1,5 @@
 FastShoppy::Application.routes.draw do
+
   resources :big_deals
 
 	devise_for :users
@@ -10,6 +11,8 @@ resources :users do
 		resources :products
 	end
 end
+
+resources:subscribers ,:only => [:new,:create,:destroy]
 
 resources :products do
   resources :product_images

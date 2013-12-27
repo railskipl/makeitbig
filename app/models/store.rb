@@ -1,20 +1,19 @@
 class Store < ActiveRecord::Base
 	extend FriendlyId
   friendly_id :friendly_name, use: :slugged
-
+  acts_as_followable
   belongs_to :user
   has_many :products, dependent: :destroy
   validates :owner_name, uniqueness: true
-	validates :email, :address, :city, :country, :image, presence: true
-	#validates :phone, format: { with: /\d{10}/, message: "bad format" }
-	mount_uploader :image, ImageUploader
-	CURRENCY = %w[Rs. $ &pound; Euro]
-	validates :currency, inclusion: { in: CURRENCY }
-	geocoded_by :geoaddress
-	before_save :meta
-	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
-
-	validate :validate_minimum_image_size
+  validates :email, :address, :city, :country, :image, presence: true
+  #validates :phone, format: { with: /\d{10}/, message: "bad format" }
+  mount_uploader :image, ImageUploader
+  CURRENCY = %w[Rs. $ &pound; Euro]
+  validates :currency, inclusion: { in: CURRENCY }
+  geocoded_by :geoaddress
+  before_save :meta
+  after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
+  validate :validate_minimum_image_size
 
 	def validate_minimum_image_size
 	  image = MiniMagick::Image.open(self.image.path)
