@@ -53,7 +53,7 @@ class Product < ActiveRecord::Base
 
 # Self.search checks if it is available, then sort results first by offers, featured & then price.
 def self.search(query, params={})
-  tire.search(load: true,page: params[:page], per_page: 7) do
+  tire.search(page: params[:page], per_page: 7) do
      query { string query, default_operator: "AND", phrase_slop: 3 }
      filter :terms, :is_available => [true]
      sort do
