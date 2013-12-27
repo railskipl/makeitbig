@@ -3,34 +3,34 @@
 ##Store Module
 1. Create sample fb like page for store owner.
 2. Inlcude like button & display its count
-3. Show help link to create fb like page \n
+3. Show help link to create fb like page
 4. Validation for Store Image
 
 ##Product Module
 1. Show publish button, if store owner has fb like page.
 2. Able to publish product listing with appropriate template on fb page
 3. Create a sample Store Admin facebook like page
-4. if premium user, its product will be published on Store admins fb page \n
-5. Search within Store \n
+4. if premium user, its product will be published on Store admins fb page
+5. Search within Store
 6. Validation for Products' Images
 
 ##Reviews Module
 1. Bold the Max Count of Review
 
 ##Follow Store - Use separate model for Followers
-1.Visitor click on button.
-2.It popups a window to add city & email --> Submits
-3.Both Fields are compulsory
-4.Email notifications are sent weekly - Product's list of particular store
-5.It must have a boolean for unsubscription
+1. Visitor click on button.
+2. It popups a window to add city & email --> Submits
+3. Both Fields are compulsory
+4. Email notifications are sent weekly - Product's list of particular store
+5. It must have a boolean for unsubscription
 
 ##My Competitors
-1.Show prices of products of other stores within 300 miles.
-2.This will shown on products page
+1. Show prices of products of other stores within 300 miles.
+2. This will shown on products page
 
 ##Weekly Deals - Big Deals
-1.To make existing as store owner specific.
-2.If the deal matches to any follower's city. Send them email notification.
+1. To make existing as store owner specific.
+2. If the deal matches to any follower's city. Send them email notification.
 
 ##Analytics Module
 1. Implement NV-d3 for featured product statistics - by month
@@ -44,15 +44,15 @@ For premium users, Implement a Chat Funcationality
 with the store id
 
 ##Product info - Nutch _ Elastic_Search
-1.Based on search results, show prices of other e-commerce
+1. Based on search results, show prices of other e-commerce
 sites
 This will be the last module to implement after design integration.
 
 ##Design Integration Pages + Email
-1.Must not make view with lots of code.
-2.Use Helper methods precisely.
-3.Oprimise the images, if loading time is high.
-4.Use Page-Speed or Yslow while integrating the design
+1. Must not make view with lots of code.
+2. Use Helper methods precisely.
+3. Oprimise the images, if loading time is high.
+4. Use Page-Speed or Yslow while integrating the design
 
 ##Payment Integration
 
@@ -68,10 +68,10 @@ b. Meta Description - Store owner will add it
 This section will be dynamic meta tags of store owner's page.
 
 ##Product Module
-Create Product List Functionlaity
-Search products within Store
+a. Create Product List Functionlaity
+b. Search products within Store
 
 Product has already the meta keywords & description.
-Meta Keywords -populates -->"category, subcategory, subcategory city,
-store owner name city, product name city" & then store owners adds it.
-Meta Description: if not added would be 50 words of product description.
+a. Meta Keywords -populates -->"category, subcategory, subcategory city,
+b. store owner name city, product name city" & then store owners adds it.
+c. Meta Description: if not added would be 50 words of product description.
