@@ -9,6 +9,14 @@ module ApplicationHelper
     |k,v| v >= 1 }.inject({}) { |r, e| r[e.first] = e.last; r }
 		end
 
+    def maximum_count(hash)
+      max_arr = []
+      hash.each do |c|
+        max_arr << c[1]
+      end
+      return max_arr.max
+    end
+
 		def format_boolean(status)
         if status
           icon_tick
