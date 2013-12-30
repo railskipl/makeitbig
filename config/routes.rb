@@ -40,6 +40,8 @@ end
 
   get 'productlists', :to => "home#productlists"
 
+  get 'subscribers/validations/check_email', :to=>"subscribers#check_email"
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

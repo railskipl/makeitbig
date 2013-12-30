@@ -24,11 +24,18 @@ class SubscribersController < ApplicationController
   end
 
   def destroy
- 	store = Store.find(@subscriber.store_id)
+ 	  store = Store.find(@subscriber.store_id)
   	@subscriber.stop_following(store)
   	@subscriber.destroy
   	redirect_to root_url
   end
+
+ def check_email
+  @user = Subscriber.find_by_email(params[:subscriber][:email]) 
+    respond_to do |format|
+          format.json { render :json => !@user,:callback => params['callback'] }
+    end
+ end
 
    private
  	
