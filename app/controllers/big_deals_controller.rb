@@ -1,5 +1,5 @@
 class BigDealsController < ApplicationController
-
+before_filter :authenticate_user!
 def new
 		@big_deal = BigDeal.new
 end
