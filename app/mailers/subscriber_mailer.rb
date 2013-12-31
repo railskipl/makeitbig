@@ -4,7 +4,7 @@ class SubscriberMailer < ActionMailer::Base
   	@user = user
   	@store = Store.find(user.store_id)
   	@products = @store.products
-  	@products = @products.delete_if {|i| (Date.today - i.created_at.to_date + 1) > 6 }
+  	@products = @products.delete_if {|i| (Date.today - i.created_at.to_date + 1) > 7 }
     mail(:to => user.email, :subject => "products list")
   end
 end
