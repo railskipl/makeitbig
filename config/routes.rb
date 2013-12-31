@@ -12,7 +12,7 @@ resources :users do
 	end
 end
 
-resources:subscribers ,:only => [:new,:create,:destroy]
+resources:subscribers ,:only => [:new,:create,:destroy,:update]
 
 resources :products do
   resources :product_images

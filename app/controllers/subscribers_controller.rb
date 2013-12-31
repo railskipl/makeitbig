@@ -6,6 +6,12 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new
   end
 
+   def self.do_something
+    @subscribers = Subscriber.all
+    @subscribers.each do |subscriber|
+       SubscriberMailer.registration_confirmation(subscriber).deliver
+    end
+   end
 
 
   def create
@@ -35,6 +41,12 @@ class SubscribersController < ApplicationController
     respond_to do |format|
           format.json { render :json => !@user,:callback => params['callback'] }
     end
+ end
+
+ def update
+    @subscriber = Subscriber.find(params[:id])
+    @subscriber.update_column("status",true)
+    redirect_to :back
  end
 
    private
