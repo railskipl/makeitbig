@@ -6,7 +6,6 @@ gem 'rails', '4.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 gem "acts_as_follower"
-# gem 'whenever'
 gem 'rufus-scheduler'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
