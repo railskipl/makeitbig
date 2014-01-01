@@ -24,9 +24,12 @@ text {
 
 <% @products.each do |product| %>
 <h3><%= product.name %> Analytics</h3>
-
+<%= raw analytics_data(product).to_json %>
 <%= link_to t('.new', :default => t("helpers.links.back")),
             user_stores_path(current_user),
+            :class => 'btn btn-primary' %>
+<%= link_to t('.new', :default => t("helpers.links.featured_analytics")),
+            featured_analytics_path(@store, :user_id => current_user),
             :class => 'btn btn-primary' %>
  <div id="chart1" class='with-3d-shadow with-transitions'>
     <svg> </svg>
@@ -84,7 +87,7 @@ nv.addGraph(function() {
         .tickFormat(d3.format(',f'));
 
     chart.y2Axis
-        .tickFormat(function(d) { return '$' + d3.format(',.2f')(d) });
+        .tickFormat(function(d) { return });
 
     chart.bars.forceY([0]).padData(false);
     //chart.lines.forceY([0]);

@@ -1,4 +1,6 @@
 class StoresController < ApplicationController
+	require 'csv'
+	require 'json'
 	before_action :set_user
 	def index
 		@stores = @user.stores
@@ -39,6 +41,11 @@ class StoresController < ApplicationController
 	def analytics
 		@store = Store.friendly.find(params[:id])
 		@products = @store.products.order('featured desc').paginate(:page => params[:page], :per_page => 1)
+	end
+
+		def featured_analytics
+		@store = Store.friendly.find(params[:id])
+		@products = @store.products.where('featured =?', true)
 	end
 
 

@@ -19,11 +19,14 @@ module StoresHelper
  			return dataset
 		end
 
-
-		def top_analytics_data(product)
-			dataset = [product.name, product.impressionist_count ]
+		def featured_analytics_data(product)
+			 dates =  product.impressions.order("created_at asc").map{|c| c.created_at.strftime("%Y-%m-%d")}
+			dataset = dates.uniq.map do |u|
+ 				{:date => u, :count => product.impressionist_count(:start_date=> u, :end_date => u.to_date + 1.day ) }
+ 			end
  			return dataset
 		end
+
 
 	# def analytics_date_x(product,date_x = [])
 	# 	dates =  product.impressions.order("created_at asc").map{|c| c.created_at.strftime("%Y-%m-%d")}

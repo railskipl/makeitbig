@@ -16,7 +16,8 @@
 //= require jquery.turbolinks
 //= require underscore
 //= require gmaps/google
-//= require nvd3/lib/d3.v2
+//= require d3.v2
+//= require d3.v2.min
 //= require nvd3-rails
 //= require turbolinks
 //= require_tree .

@@ -29,6 +29,7 @@ end
 	get "/store/:id" => 'home#store_catalogue', :as => 'store_search_show'
 	get "/:owner_name/:id" => 'home#product_show', :as => 'product_search_show'
 	get	"/store/:id/analytics" => 'stores#analytics', :as => 'store_analytics'
+	get	"/store/:id/featured_analytics" => 'stores#featured_analytics', :as => 'featured_analytics'
 	get '/products/:id/status', :to => "products#toggled_feature"
 	put '/plans/', :to => "plans#plan_update", :as => 'plan_update'
 	post '/home/:product_id', :to => "home#create", :as => 'add_to_compare'
