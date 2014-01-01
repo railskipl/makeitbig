@@ -1,4 +1,5 @@
 FastShoppy::Application.routes.draw do
+
   resources :big_deals
 
 	devise_for :users
@@ -10,6 +11,8 @@ resources :users do
 		resources :products
 	end
 end
+
+resources:subscribers ,:only => [:new,:create,:destroy,:update]
 
 resources :products do
   resources :product_images
@@ -37,6 +40,8 @@ end
 	get 'compare_product', :to => "home#compare_product", :as => 'compare_products'
 
   get 'productlists', :to => "home#productlists"
+
+  get 'subscribers/validations/check_email', :to=>"subscribers#check_email"
 
 
   # Example of regular route:

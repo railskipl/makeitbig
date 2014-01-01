@@ -12,8 +12,13 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
-		@review = @product.reviews.new(reviews_params)
 		@store = @product.store
+		@review = @product.reviews.new(reviews_params)
+<<<<<<< HEAD
+		@store = @product.store
+=======
+
+>>>>>>> ankit
 		if @review.save
 			redirect_to product_reviews_path(@product),
 						notice: "Thanks, for your review."
