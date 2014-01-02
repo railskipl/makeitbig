@@ -1,7 +1,8 @@
-Following Products are added by store owner</br>
-<% @products.each do |product| %>
-<%= product.name %><br/>
-<%= product.product_images.first.url rescue nil %>
-<% end %>
 
-<%= link_to "Unsubscribe" ,subscriber_path(@user) ,:method => :put%>
+<% @products.each do |product| %>
+Store Owner :<%= product.store.owner_name %>
+Products :<%= product.name %><br/ >
+<% end %>
+<% @subs.each do |user|%>
+<%= link_to "Unsubscribe #{user.store.owner_name}" ,subscriber_path(user) ,:method => :put%><br/>
+<% end %>
