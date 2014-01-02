@@ -15,7 +15,11 @@ class ReviewsController < ApplicationController
 		@store = @product.store
 		@review = @product.reviews.new(reviews_params)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		@store = @product.store
+=======
+
+>>>>>>> ankit
 =======
 
 >>>>>>> ankit

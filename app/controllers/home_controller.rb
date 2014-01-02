@@ -7,9 +7,14 @@ def index
   end
     ip = request.ip
     #Harcoaded IP for development.
-      @response = Geocoder.search('117.222.40.176')
+      @response = Geocoder.search('24.193.83.1')
+      if @response.any?
       @nearby = Store.includes(:user).order("distance").near([@response.first.latitude , @response.first.longitude ], 400)
       @big_deals = BigDeal.order("distance").near([@response.first.latitude , @response.first.longitude ], 200).limit(3)
+    else
+    	@nearby = Store.all
+    	@big_deals = BigDeal.all.limit(3)
+    end
 end
 
 def create

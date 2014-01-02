@@ -1,6 +1,6 @@
 require 'rubygems'
-require 'rufus/scheduler'  
+require 'rufus/scheduler'
 scheduler = Rufus::Scheduler.new
-scheduler.every("6d") do
+scheduler.every("60s") do
     SubscribersController.do_something
 end

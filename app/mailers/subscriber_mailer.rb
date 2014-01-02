@@ -8,3 +8,16 @@ class SubscriberMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "products list")
   end
 end
+
+# What happens when user subscribes to multiple stores.
+# Cron job would perform following actions:
+	# 1. Check subcriber
+	# 2. Find all stores for which he is subcribed
+	# 3. Find products of each based on dates logic.
+	# 4. Deliver mail
+	# 5. This will be same for all subcribers
+	# 6. Template would show Store name & its newly added products.
+
+
+# Dates Logic - Fetch products if it is created between today & 7 days back.
+# If subcribers store has none products in that period, then do not send mail.
