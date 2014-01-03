@@ -19,7 +19,7 @@ def routing_error
 end
 
 def render_not_found
-  redirect_to root_url
+  render :template => "home/404"
 end
 
 end
