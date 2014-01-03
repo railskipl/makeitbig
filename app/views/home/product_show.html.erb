@@ -45,11 +45,15 @@
           <% end %>
 				<% end %></dd>
 </dl>
-
-Other Products <br/>
-<% @nearby.each do |nearby| %>
-Store Owner :<%= nearby.owner_name %><br/>
-<% nearby.products.each do |product| %>
-<%= product.name %> - <%=  number_to_currency(product.price, unit: search_price(product.store_id)) %><br/>
-<% end %>
+<hr/>
+<% if @nearby.empty? %>
+  No Products Near By..!
+<% else %>
+  Other Products <br/>
+  <% @nearby.each do |nearby| %>
+    Store Owner :<%= nearby.owner_name %><br/>
+    <% nearby.products.each do |product| %>
+    <%= product.name %> - <%=  number_to_currency(product.price, unit: search_price(product.store_id)) %><br/>
+    <% end %>
+ <% end %>
 <% end %>

@@ -57,8 +57,7 @@ end
 def product_show
 	@product = Product.friendly.find(params[:id])
 	@product_images = @product.product_images
-	@nearby = Store.where("id NOT LIKE ?",@product.store_id).order("distance").near([@product.store.latitude , @product.store.longitude ], 400) 
-	 # @nearby = @nearby.includes(:products)
+	@nearby = Store.where("id NOT LIKE ?",@product.store_id).order("distance").near([@product.store.latitude , @product.store.longitude ], 300) 
 	impressionist(@product,"visits", :unique=> [:session_hash])
 end
 
