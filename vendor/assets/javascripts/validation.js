@@ -29,32 +29,32 @@ jQuery(document).ready(function() {
 		}
 	});
 
-  jQuery("#new_subscriber").validate({
-	errorElement:'div',
-	rules: {
-	  "subscriber[email]":{
-	 				  required: true,
-	 				  email: true,
-	 				  remote:"/subscribers/validations/check_email"
-				}	,					
+ //  jQuery("#new_subscriber").validate({
+	// errorElement:'div',
+	// rules: {
+	//   "subscriber[email]":{
+	//  				  required: true,
+	//  				  email: true,
+	//  				  remote:"/subscribers/validations/check_email"
+	// 			}	,					
 		
-	  "subscriber[city]":{
-	 				  required: true
-	     		}	
+	//   "subscriber[city]":{
+	//  				  required: true
+	//      		}	
 	
-		},
-	messages: {
-	"subscriber[email]":{
-		              required: "Please enter email address",
-					  email: "Please enter valid email id",
-	 				  remote: "Email Already Exists"
-				}	,				
+	// 	},
+	// messages: {
+	// "subscriber[email]":{
+	// 	              required: "Please enter email address",
+	// 				  email: "Please enter valid email id",
+	//  				  remote: "Email Already Exists"
+	// 			}	,				
 		
-	  "subscriber[city]":{
-	     		}	
+	//   "subscriber[city]":{
+	//      		}	
 	
-		}
-	});
+	// 	}
+	// });
 	
 	  
 	

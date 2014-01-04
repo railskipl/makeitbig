@@ -15,6 +15,15 @@ def index
     	@nearby = Store.all
     	@big_deals = BigDeal.all.limit(3)
     end
+
+      @response = Geocoder.search('117.218.169.250')
+      if @response.blank?
+        @nearby = Store.includes(:user).order("distance").near(["21.1500" , "79.0900" ], 400)
+        @big_deals = BigDeal.order("distance").near(["21.1500" , "79.0900" ], 200).limit(3)
+      else
+        @nearby = Store.includes(:user).order("distance").near([@response.first.latitude , @response.first.longitude ], 400)
+        @big_deals = BigDeal.order("distance").near([@response.first.latitude , @response.first.longitude ], 200).limit(3)
+      end
 end
 
 def create
