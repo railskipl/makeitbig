@@ -12,6 +12,8 @@ resources :users do
 	end
 end
 
+get "*path", :to => "application#routing_error"
+
 resources:subscribers ,:only => [:new,:create,:destroy,:update]
 
 resources :products do

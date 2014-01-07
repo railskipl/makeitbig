@@ -4,6 +4,7 @@ class Store < ActiveRecord::Base
   acts_as_followable
   belongs_to :user
   has_many :products, dependent: :destroy
+  has_many :subscribers, dependent: :destroy
   validates :owner_name, uniqueness: true
   validates :email, :address, :city, :country, :image, presence: true
   #validates :phone, format: { with: /\d{10}/, message: "bad format" }

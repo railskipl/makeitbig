@@ -7,7 +7,7 @@ class SubscribersController < ApplicationController
   end
 
    def self.do_something
-    @subscribers = Subscriber.all
+    @subscribers = Subscriber.select(:email).distinct
     @subscribers.each do |subscriber|
        SubscriberMailer.registration_confirmation(subscriber).deliver
     end
@@ -16,11 +16,12 @@ class SubscribersController < ApplicationController
 
   def create
   	@subscriber = Subscriber.new(subscriber_params)
-	  	store = Store.find(@subscriber.store_id)
+
+	  store = Store.find(@subscriber.store_id)
     respond_to do |format|
       if @subscriber.save
       	@subscriber.follow(store)
-        format.html { redirect_to :back, notice: 'subscriber was successfully created.' }
+        format.html { redirect_to store_search_show_path(store), notice: 'subscribed successfully' }
         format.json { render action: 'show', status: :created, location: @subscriber }
       else
         format.html { render action: 'new' }
