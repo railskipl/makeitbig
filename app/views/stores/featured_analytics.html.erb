@@ -1,17 +1,13 @@
+
+<%= will_paginate @products %>
 <!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title> - jsFiddle demo</title>
   
-
-
-    
     <script src="/assets/jquery-1.8.3.js"></script>
         <script src="/assets/raphael-min.js"></script>
             <script src="/assets/morris.js"></script>
-   
-<%= javascript_include_tag "jquery-1.8.3.js","raphael-min.js","morris.js"%>
  
     
   
@@ -45,13 +41,12 @@ Morris.Line.prototype.setSeries = function(ykeys, labels){
 
 var day_data = 
 [
-  <% @results.each do |result| %>
+  <% @datasets.each do |result| %>
 
-  {'period': "<%= result.created_at.strftime("%Y-%m-%d") %>", <%= @products.map {|p| "#{p.name}: #{p.impressionist_count(:start_date=> result.created_at)}"}.join(", ") %> } <%= "," unless result == @results.last %>
+  {'period': "<%= result.created_at.strftime("%Y-%m-%d") %>", <%= @products.map {|p| "#{p.name}: #{p.impressionist_count(:start_date=> result.created_at)}"}.join(", ") %> } <%= "," unless result == @datasets.last %>
 <% end %>
  
 ];
-
 var chart = Morris.Line({
 
     element: 'graph',
@@ -64,14 +59,15 @@ var chart = Morris.Line({
     ykeys: [  
     <% @products.each do |product| %>
     <%= raw product.name.to_json%>,
-<% end %>
+    <% end %>
+
     ],
     labels: [ <% @products.each do |product| %>
-    <%= raw product.name.to_json%>
+    <%= raw product.name.to_json%>,
 <% end %>],
     // sorry, we have to put it twice :-(
-    lineColors: ['#ff4400', '#22aa22', '#FF00FF'],
-    lineColorsMap: { Watch: '#ff4400', Sunglasses: '#22aa22', Shoe: '#FF00FF' }
+    lineColors: ['#ff4400', '#22aa22', '#FF00FF', '#0000FF','#000000'],
+    lineColorsMap: { 1: '#ff4400', 2: '#22aa22', 3: '#FF00FF', 4:'#0000FF', 5:'#000000' }
 });
 
 
@@ -84,6 +80,8 @@ var chart = Morris.Line({
 
 </head>
 <body>
+
+ 
   <div id="graph" style="width:400px;height:200px;"></div>
   
 </body>

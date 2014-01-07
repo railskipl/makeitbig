@@ -41,14 +41,14 @@ class StoresController < ApplicationController
 		@products = @store.products.order('featured desc').paginate(:page => params[:page], :per_page => 1)
 	end
 
-	
+
    def featured_analytics
 		@store = Store.friendly.find(params[:id])
-		@products = @store.products.paginate(:page => params[:page], :per_page => 3)
+		@products = @store.products.order('featured desc').paginate(:page => params[:page], :per_page => 5)
 
 		start = 3.weeks.ago
 
-		@dataset =  Impression.select('created_at, impressionable_id').where("impressionable_type = 'Product'").order("created_at asc").group("date(created_at)")
+		@datasets =  Impression.select('created_at, impressionable_id').where("impressionable_type = 'Product'").order("created_at asc").group("date(created_at)")
 		
 		
 

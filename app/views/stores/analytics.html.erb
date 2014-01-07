@@ -28,6 +28,9 @@ text {
 <%= link_to t('.new', :default => t("helpers.links.back")),
             user_stores_path(current_user),
             :class => 'btn btn-primary' %>
+
+             <%= link_to t('.new', :default => t("helpers.links.featured_analytics")),
+            featured_analytics_path( :user_id => current_user), :class => 'btn btn-primary' %>
  <div id="chart1" class='with-3d-shadow with-transitions'>
     <svg> </svg>
   </div>
