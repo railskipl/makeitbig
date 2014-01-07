@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo</title>
+  
+
+
+    
+    <script src="/assets/jquery-1.8.3.js"></script>
+        <script src="/assets/raphael-min.js"></script>
+            <script src="/assets/morris.js"></script>
+   
+<%= javascript_include_tag "jquery-1.8.3.js","raphael-min.js","morris.js"%>
+ 
+    
+  
+  <style type='text/css'>
+    
+  </style>  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+
+$(window).load(function(){
+// We create a prototype function for handling series hide
+// this will make the process easier (easiest possible?)
+Morris.Line.prototype.setSeries = function(ykeys, labels){
+    this.options.ykeys = ykeys;
+    this.options.labels = labels;
+    
+    this.options.lineColors = [];
+    
+    for (i in ykeys) {
+        this.options.lineColors.push(
+          this.options.lineColorsMap[ykeys[i]]
+        );
+    }
+    
+    // we don't need to provide new data 
+    // without unused series, but we need to call setData
+    this.setData(this.options.data);
+};
+
+var day_data = 
+[
+  <% @results.each do |result| %>
+
+  {'period': "<%= result.created_at.strftime("%Y-%m-%d") %>", <%= @products.map {|p| "#{p.name}: #{p.impressionist_count(:start_date=> result.created_at)}"}.join(", ") %> } <%= "," unless result == @results.last %>
+<% end %>
+ 
+];
+
+var chart = Morris.Line({
+
+    element: 'graph',
+
+    data: day_data,
+
+    xkey: 'period',
+ 
+
+    ykeys: [  
+    <% @products.each do |product| %>
+    <%= raw product.name.to_json%>,
+<% end %>
+    ],
+    labels: [ <% @products.each do |product| %>
+    <%= raw product.name.to_json%>
+<% end %>],
+    // sorry, we have to put it twice :-(
+    lineColors: ['#ff4400', '#22aa22', '#FF00FF'],
+    lineColorsMap: { Watch: '#ff4400', Sunglasses: '#22aa22', Shoe: '#FF00FF' }
+});
+
+
+});//]]>  
+
+
+
+</script>
+
+
+</head>
+<body>
+  <div id="graph" style="width:400px;height:200px;"></div>
+  
+</body>
+
+
+</html>
+

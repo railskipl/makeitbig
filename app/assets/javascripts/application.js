@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require morris
 //= require twitter/bootstrap
 //= require jquery.turbolinks
 //= require underscore
